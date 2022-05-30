@@ -24,4 +24,9 @@
         <item name="colorAccent">@color/secondaryProgress</item>
     </style>
 
+    <style name="SearView.Custom" parent="Widget.AppCompat.Light.SearchView">
+        <item name="android:textSize">17sp</item>
+        <item name="android:paddingBottom">0.5dp</item>
+    </style>
+
 </resources>
