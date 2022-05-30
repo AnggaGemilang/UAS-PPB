@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     case (R.id.nav_bookmark):
                         makeCurrentFragment(bookmarkFragment);
                         item.setCheckable(true);
-                        Objects.requireNonNull(getSupportActionBar()).setTitle("Bookmark");
+                        Objects.requireNonNull(getSupportActionBar()).setTitle("My Bookmarks");
                         return true;
                 }
                 return false;
