@@ -11,36 +11,80 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:paddingHorizontal="30dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="40dp"
-            android:background="@drawable/dashboard_header"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="29sp"
-                android:text="Agaton News" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="19sp"
-                android:textColor="@color/white"
-                android:text="Explore the world with agaton" />
-
-            <SearchView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:background="@color/purple_200"
-                android:backgroundTint="@color/white"
-                android:queryHint="Enter Keyword Here ..."
-                android:searchIcon="@drawable/ic_baseline_search_24" />
+                android:layout_height="190dp"
+                android:paddingHorizontal="30dp"
+                android:paddingTop="10dp"
+                android:background="@drawable/dashboard_header"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="29sp"
+                    android:text="Agaton News" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:textColor="@color/white"
+                    android:text="Explore the world with agaton" />
+
+                <SearchView
+                    android:id="@+id/input_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_all"
+                    android:autofillHints="AnggaGemilang"
+                    android:paddingHorizontal="5dp"
+                    android:theme="@style/SearView.Custom"
+                    android:inputType="text"
+                    android:paddingTop="3dp"
+                    android:singleLine="true"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Enter keyword here ..."
+                    android:imeOptions="actionDone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:paddingHorizontal="25dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Trending In Indonesia" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textFontWeight="700"
+                    android:text="Trending Around The World" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
