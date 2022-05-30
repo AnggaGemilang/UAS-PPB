@@ -9,7 +9,7 @@
         android:title="FIlter" />
 
     <item
-        android:id="@+id/about"
+        android:id="@+id/act_about"
         app:showAsAction="never"
         android:title="About" />
 
