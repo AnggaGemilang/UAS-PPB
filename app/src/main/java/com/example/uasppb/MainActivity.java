@@ -37,16 +37,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case (R.id.nav_home):
                         makeCurrentFragment(dashboardFragment);
+                        item.setCheckable(true);
                         Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
-                        break;
+                        return true;
                     case (R.id.nav_search):
                         makeCurrentFragment(searchFragment);
+                        item.setCheckable(true);
                         Objects.requireNonNull(getSupportActionBar()).setTitle("Search");
-                        break;
+                        return true;
                     case (R.id.nav_bookmark):
                         makeCurrentFragment(bookmarkFragment);
+                        item.setCheckable(true);
                         Objects.requireNonNull(getSupportActionBar()).setTitle("Bookmark");
-                        break;
+                        return true;
                 }
                 return false;
             }
