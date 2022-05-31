@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookmarkFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.DashboardFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -11,42 +12,147 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:background="@drawable/dashboard_header"
-            android:orientation="vertical"
-            android:paddingHorizontal="30dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="40dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="190dp"
+                android:paddingHorizontal="30dp"
+                android:paddingTop="10dp"
+                android:background="@drawable/dashboard_header"
+                android:orientation="vertical" >
 
-            </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="29sp"
+                    android:text="My Collection" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="19sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:textColor="@color/white"
+                    android:text="Save the best for the last" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Agaton News"
-                android:textColor="@color/white"
-                android:textSize="29sp"
-                android:textStyle="bold" />
+                <SearchView
+                    android:id="@+id/input_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_all"
+                    android:autofillHints="AnggaGemilang"
+                    android:paddingHorizontal="5dp"
+                    android:theme="@style/SearView.Custom"
+                    android:inputType="text"
+                    android:paddingTop="3dp"
+                    android:singleLine="true"
+                    app:queryBackground="@null"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Enter keyword here ..."
+                    android:imeOptions="actionDone" />
 
-            <SearchView
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:background="@color/purple_200"
-                android:backgroundTint="@color/white"
-                android:queryHint="Enter Keyword Here ..."
-                android:searchIcon="@drawable/ic_baseline_search_24" />
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:paddingLeft="25dp"
+                android:paddingBottom="120dp"
+                android:orientation="vertical" >
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="15dp"
+                    android:text="Bookmarked - 10 Data" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp"
+                    android:layout_marginRight="25dp"
+                    app:cardCornerRadius="12dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+
+                        <ProgressBar
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:id="@+id/loader"/>
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/attos"
+                            android:scaleType="centerCrop" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="24 May 2022, 20:00"
+                            android:padding="17dp"
+                            android:textSize="15dp"
+                            android:textColor="@color/white"
+                            android:id="@+id/tvTitle"/>
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="-30dp"
+                            android:drawableLeft="@drawable/ic_baseline_filter_list_24"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="17dp"
+                            android:layout_gravity="bottom"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Atta Halilintar Malu Lihat Istri Pakai Baju 'Turun..."
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:id="@+id/tvSource"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="By Sabihis"
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:id="@+id/tv"/>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

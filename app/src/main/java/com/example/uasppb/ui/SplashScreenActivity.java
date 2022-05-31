@@ -1,4 +1,4 @@
-package com.example.uasppb;
+package com.example.uasppb.ui;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;

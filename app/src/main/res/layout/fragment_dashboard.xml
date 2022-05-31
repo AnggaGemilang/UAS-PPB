@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DashboardFragment">
+    tools:context=".ui.DashboardFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -50,6 +50,7 @@
                     android:inputType="text"
                     android:paddingTop="3dp"
                     android:singleLine="true"
+                    app:queryBackground="@null"
                     android:iconifiedByDefault="false"
                     android:queryHint="Enter keyword here ..."
                     android:imeOptions="actionDone" />
@@ -60,100 +61,289 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="20dp"
-                android:paddingHorizontal="25dp"
+                android:paddingLeft="25dp"
+                android:paddingBottom="120dp"
                 android:orientation="vertical" >
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none"
+                    tools:ignore="UselessParent">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/mainColor"
+                            android:layout_marginRight="10dp"
+                            app:cardCornerRadius="50dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="6dp"
+                                android:paddingHorizontal="30dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="General" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/semi_grey"
+                            android:layout_marginRight="10dp"
+                            app:cardCornerRadius="50dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="6dp"
+                                android:paddingHorizontal="30dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:text="Business" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/semi_grey"
+                            android:layout_marginRight="10dp"
+                            app:cardCornerRadius="50dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="6dp"
+                                android:paddingHorizontal="30dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:text="Entertaiment" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/semi_grey"
+                            android:layout_marginRight="10dp"
+                            app:cardCornerRadius="50dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="6dp"
+                                android:paddingHorizontal="30dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:text="Health" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/semi_grey"
+                            android:layout_marginRight="10dp"
+                            app:cardCornerRadius="50dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="6dp"
+                                android:paddingHorizontal="30dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:text="Science" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/semi_grey"
+                            android:layout_marginRight="10dp"
+                            app:cardCornerRadius="50dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="6dp"
+                                android:paddingHorizontal="30dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:text="Sports" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="@color/mainColor"
+                            android:layout_marginRight="10dp"
+                            app:cardCornerRadius="50dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="6dp"
+                                android:paddingHorizontal="30dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:text="Technology" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
                     android:textStyle="bold"
                     android:text="Trending In Indonesia" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    app:cardElevation="4dp"
+                    android:layout_marginRight="25dp"
+                    app:cardCornerRadius="12dp">
 
-                    <androidx.cardview.widget.CardView
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:id="@+id/cardView"
-                        app:cardElevation="4dp"
-                        app:cardCornerRadius="6dp">
+                        android:layout_height="200dp">
 
-                        <FrameLayout
+                        <ProgressBar
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:id="@+id/loader"/>
+
+                        <ImageView
+                            android:id="@+id/image"
                             android:layout_width="match_parent"
-                            android:layout_height="200dp">
+                            android:layout_height="match_parent"
+                            android:src="@drawable/attos"
+                            android:scaleType="centerCrop" />
 
-                            <ProgressBar
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:id="@+id/loader"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient"/>
 
-                            <ImageView
-                                android:id="@+id/image"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="centerCrop" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="24 May 2022, 20:00"
+                            android:padding="17dp"
+                            android:textSize="15dp"
+                            android:textColor="@color/white"
+                            android:id="@+id/tvTitle"/>
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/gradient"/>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@android:color/transparent"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="-30dp"
+                            android:drawableLeft="@drawable/ic_baseline_filter_list_24"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="17dp"
+                            android:layout_gravity="bottom"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="TITLE"
-                                android:padding="10dp"
-                                android:textSize="20dp"
+                                android:text="Atta Halilintar Malu Lihat Istri Pakai Baju 'Turun..."
+                                android:textSize="18sp"
+                                android:textStyle="bold"
                                 android:textColor="@color/white"
-                                android:id="@+id/tvTitle"/>
+                                android:id="@+id/tvSource"/>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:padding="10dp"
-                                android:layout_gravity="bottom"
-                                android:orientation="horizontal">
+                                android:text="By Sabihis"
+                                android:textSize="14sp"
+                                android:textColor="@color/white"
+                                android:id="@+id/tv"/>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Source"
-                                    android:textSize="15dp"
-                                    android:textColor="@color/white"
-                                    android:id="@+id/tvSource"/>
+                        </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="5 hour ago"
-                                    android:gravity="right"
-                                    android:textSize="15dp"
-                                    android:textColor="@color/white"
-                                    android:id="@+id/tvDate"/>
+                    </FrameLayout>
 
-                            </LinearLayout>
-
-                        </FrameLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="18sp"
-                    android:layout_marginVertical="20dp"
-                    android:textStyle="bold"
-                    android:textFontWeight="700"
-                    android:text="Trending Around The World" />
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

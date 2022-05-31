@@ -1,4 +1,4 @@
-package com.example.uasppb;
+package com.example.uasppb.ui;
 
 import android.os.Bundle;
 
@@ -8,13 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.uasppb.databinding.FragmentBookmarkBinding;
 import com.example.uasppb.databinding.FragmentDashboardBinding;
 
-public class BookmarkFragment extends Fragment { ;
+public class DashboardFragment extends Fragment {
 
-    private FragmentBookmarkBinding binding;
-    
+    private FragmentDashboardBinding binding;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +21,8 @@ public class BookmarkFragment extends Fragment { ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentBookmarkBinding.inflate(getLayoutInflater(), container, false);
+        binding = FragmentDashboardBinding.inflate(getLayoutInflater(), container, false);
         return binding.getRoot();
     }
+
 }

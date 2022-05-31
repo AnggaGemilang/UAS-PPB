@@ -1,18 +1,18 @@
-package com.example.uasppb;
+package com.example.uasppb.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
+import com.example.uasppb.R;
 import com.example.uasppb.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.Objects;
@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         DashboardFragment dashboardFragment = new DashboardFragment();
         BookmarkFragment bookmarkFragment = new BookmarkFragment();
-        SearchFragment searchFragment = new SearchFragment();
 
         getSupportActionBar().setElevation(0);
         getSupportActionBar().setTitle("Dashboard");
@@ -44,15 +43,10 @@ public class MainActivity extends AppCompatActivity {
                         item.setCheckable(true);
                         Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
                         return true;
-                    case (R.id.nav_search):
-                        makeCurrentFragment(searchFragment);
-                        item.setCheckable(true);
-                        Objects.requireNonNull(getSupportActionBar()).setTitle("Search");
-                        return true;
                     case (R.id.nav_bookmark):
                         makeCurrentFragment(bookmarkFragment);
                         item.setCheckable(true);
-                        Objects.requireNonNull(getSupportActionBar()).setTitle("My Bookmarks");
+                        Objects.requireNonNull(getSupportActionBar()).setTitle("Bookmarks");
                         return true;
                 }
                 return false;
@@ -83,7 +77,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.act_filter):
-                Toast.makeText(this, "Modal Muncul", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
+                mBuilder.setTitle("Set Region");
+                mBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                mBuilder.setView(mView);
+                mBuilder.show();
                 break;
             case  (R.id.act_about):
                 new AlertDialog.Builder(this)
