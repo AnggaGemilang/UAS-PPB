@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.DashboardFragment">
+    tools:context=".ui.Dashboard.DashboardFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                     android:text="Explore the world with agaton" />
 
                 <SearchView
-                    android:id="@+id/input_username"
+                    android:id="@+id/input_search"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="20dp"
@@ -62,7 +62,7 @@
                 android:layout_height="match_parent"
                 android:paddingTop="20dp"
                 android:paddingLeft="25dp"
-                android:paddingBottom="120dp"
+                android:paddingBottom="100dp"
                 android:orientation="vertical" >
 
                 <HorizontalScrollView
@@ -79,9 +79,10 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/general_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:cardBackgroundColor="@color/mainColor"
+                            android:backgroundTint="@color/mainColor"
                             android:layout_marginRight="10dp"
                             app:cardCornerRadius="50dp" >
 
@@ -93,6 +94,7 @@
                                 android:paddingHorizontal="30dp" >
 
                                 <TextView
+                                    android:id="@+id/general_txt"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
@@ -104,10 +106,12 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/business_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardBackgroundColor="@color/semi_grey"
                             android:layout_marginRight="10dp"
+                            android:layout_marginBottom="5dp"
                             app:cardCornerRadius="50dp" >
 
                             <LinearLayout
@@ -118,6 +122,7 @@
                                 android:paddingHorizontal="30dp" >
 
                                 <TextView
+                                    android:id="@+id/business_txt"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
@@ -129,10 +134,12 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/entertaiment_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardBackgroundColor="@color/semi_grey"
                             android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
                             app:cardCornerRadius="50dp" >
 
                             <LinearLayout
@@ -143,6 +150,7 @@
                                 android:paddingHorizontal="30dp" >
 
                                 <TextView
+                                    android:id="@+id/entertaiment_txt"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
@@ -154,10 +162,12 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/science_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:cardBackgroundColor="@color/semi_grey"
                             android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
                             app:cardCornerRadius="50dp" >
 
                             <LinearLayout
@@ -168,31 +178,7 @@
                                 android:paddingHorizontal="30dp" >
 
                                 <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:textColor="@color/black"
-                                    android:text="Health" />
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:cardBackgroundColor="@color/semi_grey"
-                            android:layout_marginRight="10dp"
-                            app:cardCornerRadius="50dp" >
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="6dp"
-                                android:paddingHorizontal="30dp" >
-
-                                <TextView
+                                    android:id="@+id/science_txt"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
@@ -203,147 +189,25 @@
 
                         </androidx.cardview.widget.CardView>
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:cardBackgroundColor="@color/semi_grey"
-                            android:layout_marginRight="10dp"
-                            app:cardCornerRadius="50dp" >
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="6dp"
-                                android:paddingHorizontal="30dp" >
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:textColor="@color/black"
-                                    android:text="Sports" />
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:cardBackgroundColor="@color/mainColor"
-                            android:layout_marginRight="10dp"
-                            app:cardCornerRadius="50dp" >
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="6dp"
-                                android:paddingHorizontal="30dp" >
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:textColor="@color/white"
-                                    android:text="Technology" />
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
                     </LinearLayout>
 
                 </HorizontalScrollView>
 
                 <TextView
+                    android:id="@+id/txt_title_theme"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="20sp"
                     android:textColor="@color/black"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="20dp"
                     android:textStyle="bold"
                     android:text="Trending In Indonesia" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardElevation="4dp"
-                    android:layout_marginRight="25dp"
-                    app:cardCornerRadius="12dp">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp">
-
-                        <ProgressBar
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:id="@+id/loader"/>
-
-                        <ImageView
-                            android:id="@+id/image"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/attos"
-                            android:scaleType="centerCrop" />
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/gradient"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="24 May 2022, 20:00"
-                            android:padding="17dp"
-                            android:textSize="15dp"
-                            android:textColor="@color/white"
-                            android:id="@+id/tvTitle"/>
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@android:color/transparent"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginRight="-30dp"
-                            android:drawableLeft="@drawable/ic_baseline_filter_list_24"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="17dp"
-                            android:layout_gravity="bottom"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Atta Halilintar Malu Lihat Istri Pakai Baju 'Turun..."
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/white"
-                                android:id="@+id/tvSource"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="By Sabihis"
-                                android:textSize="14sp"
-                                android:textColor="@color/white"
-                                android:id="@+id/tv"/>
-
-                        </LinearLayout>
-
-                    </FrameLayout>
-
-                </androidx.cardview.widget.CardView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_trending"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
 

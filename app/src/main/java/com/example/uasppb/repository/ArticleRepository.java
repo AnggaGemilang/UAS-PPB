@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.uasppb.model.database.Article;
 import com.example.uasppb.resource.ArticleDao;
-import com.example.uasppb.resource.NeaDatabase;
+import com.example.uasppb.resource.RoomDatabase;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class ArticleRepository {
     private LiveData<List<Article>> mAllArticle;
 
     public ArticleRepository(Application application) {
-        NeaDatabase db = NeaDatabase.getDatabase(application);
+        RoomDatabase db = RoomDatabase.getDatabase(application);
         articleDao = db.articleDao();
         mAllArticle = articleDao.getAllArticle();
     }
@@ -25,7 +25,7 @@ public class ArticleRepository {
     }
 
     public void insert(Article article) {
-        NeaDatabase.databaseWriteExecutor.execute(() -> {
+        RoomDatabase.databaseWriteExecutor.execute(() -> {
             articleDao.insert(article);
         });
     }
@@ -35,13 +35,13 @@ public class ArticleRepository {
     }
 
     public void delete(Article article) {
-        NeaDatabase.databaseWriteExecutor.execute(() -> {
+        RoomDatabase.databaseWriteExecutor.execute(() -> {
             articleDao.delete(article);
         });
     }
 
     public void deleteAll() {
-        NeaDatabase.databaseWriteExecutor.execute(() -> {
+        RoomDatabase.databaseWriteExecutor.execute(() -> {
             articleDao.deleteAll();
         });
     }

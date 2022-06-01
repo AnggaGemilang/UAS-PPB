@@ -62,7 +62,6 @@ public class Articles {
     }
 
     public Articles(Source source, String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
-
         this.source = source;
         this.author = author;
         this.title = title;
@@ -74,7 +73,6 @@ public class Articles {
     }
 
     public Articles(){}
-
 
     public Source getSource() {
         return source;

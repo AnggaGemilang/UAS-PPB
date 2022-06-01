@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.uasppb" >
+    package="com.example.uasppb">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,33 +14,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UASPPB"
-        tools:targetApi="31" >
-
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.DetailActivity"
-            android:theme="@style/Theme.DetailScreen"
-            android:exported="true" >
-
-        </activity>
-
+            android:exported="true"
+            android:theme="@style/Theme.DetailScreen"></activity>
         <activity
             android:name=".ui.SplashScreenActivity"
-            android:theme="@style/Theme.SplashScreen"
+            android:exported="true"
             android:noHistory="true"
-            android:exported="true" >
-
-        </activity>
-
+            android:theme="@style/Theme.SplashScreen"></activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
     </application>
+
 </manifest>

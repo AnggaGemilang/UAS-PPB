@@ -6,13 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Spinner;
 
 import com.example.uasppb.R;
 import com.example.uasppb.databinding.ActivityMainBinding;
+import com.example.uasppb.ui.Bookmark.BookmarkFragment;
+import com.example.uasppb.ui.Dashboard.DashboardFragment;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.Objects;
@@ -54,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private int getIndex(Spinner spinner, String myString){
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                return i;
+            }
+        }
+        return 0;
+    }
+
     private void makeCurrentFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_layout, fragment)
@@ -79,17 +93,22 @@ public class MainActivity extends AppCompatActivity {
             case (R.id.act_filter):
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
+                Spinner spinner = mView.findViewById(R.id.region);
                 mBuilder.setTitle("Set Region");
                 mBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        SharedPreferences settings = getSharedPreferences("NEWS_SETTINGS", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = settings.edit();
+                        editor.putString("region", spinner.getSelectedItem().toString());
+                        editor.apply();
+                        makeCurrentFragment(new DashboardFragment());
                     }
                 });
                 mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        dialogInterface.dismiss();
                     }
                 });
                 mBuilder.setView(mView);

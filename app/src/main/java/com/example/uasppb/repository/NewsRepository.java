@@ -36,7 +36,6 @@ public class NewsRepository {
                     newsData.setValue(response.body());
                 }
             }
-
             @Override
             public void onFailure(Call<News> call, Throwable t) {
                 newsData.setValue(null);

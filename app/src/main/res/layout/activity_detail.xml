@@ -15,6 +15,7 @@
             android:layout_height="320dp" >
 
             <ImageView
+                android:id="@+id/img_thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -59,13 +60,13 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:background="@drawable/ic_baseline_web_24"
-                        android:layout_marginRight="15dp" />
+                        android:layout_marginRight="25dp" />
 
                     <ImageButton
                         android:id="@+id/bookmark"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:background="@drawable/ic_baseline_bookmark_24" />
+                        android:background="@drawable/ic_baseline_bookmark_border_24" />
 
                 </LinearLayout>
 
@@ -84,21 +85,21 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/txt_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Atta Halilintar Malu Lihat Istri Pakai Baju 'Turun..."
                         android:textSize="22sp"
                         android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:id="@+id/tvSource"/>
+                        android:textColor="@color/white"  />
 
                     <TextView
+                        android:id="@+id/txt_publisher_news"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="By Sabihis"
                         android:textSize="16sp"
-                        android:textColor="@color/white"
-                        android:id="@+id/tv"/>
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
 
@@ -115,24 +116,28 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/txt_written"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="Written: Asep Superman" />
 
             <TextView
+                android:id="@+id/txt_publisher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="Published By: CNN Indonesia" />
 
             <TextView
+                android:id="@+id/txt_published"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="Published At: 24 Mei 2022" />
 
             <TextView
+                android:id="@+id/txt_isi_berita"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
