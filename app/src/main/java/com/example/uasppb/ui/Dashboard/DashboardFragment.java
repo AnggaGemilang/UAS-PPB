@@ -4,44 +4,38 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.uasppb.R;
 import com.example.uasppb.databinding.FragmentDashboardBinding;
 import com.example.uasppb.model.Articles;
+import com.example.uasppb.viewmodel.ArticleViewModel;
 import com.example.uasppb.viewmodel.NewsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class DashboardFragment extends Fragment implements DashboardListAdapter.ArticleListener {
+public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
     private NewsViewModel newsViewModel;
     private DashboardListAdapter adapterNews;
-    private ArrayList<Articles> articleArrayList = new ArrayList<>();
+    private final ArrayList<Articles> articleArrayList = new ArrayList<>();
     private String category = "general";
     private String country;
 
@@ -225,14 +219,8 @@ public class DashboardFragment extends Fragment implements DashboardListAdapter.
     private void setupRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         binding.recyclerViewTrending.setLayoutManager(linearLayoutManager);
-        adapterNews = new DashboardListAdapter(this.getActivity(), articleArrayList, new DashboardListAdapter.NewsDiff(), this);
+        adapterNews = new DashboardListAdapter(this.getActivity(), articleArrayList);
         binding.recyclerViewTrending.setAdapter(adapterNews);
         adapterNews.notifyDataSetChanged();
-    }
-
-    @Override
-    public void statusClick(View view, Articles articles) {
-//        articleViewModel.insert(article);
-        Toast.makeText(getActivity(), "Berita berhasil disimpan", Toast.LENGTH_LONG).show();
     }
 }

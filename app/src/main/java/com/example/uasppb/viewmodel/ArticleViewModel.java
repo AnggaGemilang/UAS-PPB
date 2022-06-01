@@ -20,6 +20,11 @@ public class ArticleViewModel extends AndroidViewModel {
         mAllArticle = mRepository.getAllArticle();
     }
 
+    public LiveData<List<Article>> getArticleByQuery(String title){
+        mAllArticle = mRepository.getArticleByQuery(title);
+        return mAllArticle;
+    }
+
     public LiveData<List<Article>> getmAllArticle() {
         return mAllArticle;
     }
@@ -28,15 +33,12 @@ public class ArticleViewModel extends AndroidViewModel {
         mRepository.insert(article);
     }
 
-    public void deleteAll() {
-        mRepository.deleteAll();
-    }
-
     public void delete(Article article) {
         mRepository.delete(article);
     }
 
-    public LiveData<List<String>> getArticle(String url){
-        return mRepository.getArticle(url);
+    public LiveData<List<String>> getArticle(String title){
+        return mRepository.getArticle(title);
     }
+
 }

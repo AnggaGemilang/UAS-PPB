@@ -20,6 +20,11 @@ public class ArticleRepository {
         mAllArticle = articleDao.getAllArticle();
     }
 
+    public LiveData<List<Article>> getArticleByQuery(String title){
+        mAllArticle = articleDao.getArticleByQuery(title);
+        return mAllArticle;
+    }
+
     public LiveData<List<Article>> getAllArticle() {
         return mAllArticle;
     }
@@ -37,12 +42,6 @@ public class ArticleRepository {
     public void delete(Article article) {
         RoomDatabase.databaseWriteExecutor.execute(() -> {
             articleDao.delete(article);
-        });
-    }
-
-    public void deleteAll() {
-        RoomDatabase.databaseWriteExecutor.execute(() -> {
-            articleDao.deleteAll();
         });
     }
 }

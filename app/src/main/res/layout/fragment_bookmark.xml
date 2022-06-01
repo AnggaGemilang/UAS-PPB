@@ -39,7 +39,7 @@
                     android:text="Save the best for the last" />
 
                 <SearchView
-                    android:id="@+id/input_username"
+                    android:id="@+id/input_search_bookmark"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="20dp"

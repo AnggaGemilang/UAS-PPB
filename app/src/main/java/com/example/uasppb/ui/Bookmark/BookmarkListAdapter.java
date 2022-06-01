@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,14 +43,13 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<BookmarkListAdapte
     @NotNull
     @Override
     public BookmarkViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_template_item, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.article_template_item, viewGroup, false);
         return new BookmarkViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull BookmarkViewHolder holder, int position) {
         Article article = articles.get(position);
-
         Date date1 = null;
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -63,14 +63,14 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<BookmarkListAdapte
         holder.titleItemView.setText(article.getTitle());
         holder.publisherItemView.setText(article.getSource_name());
 
-//        holder.imgBtnDelete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                articleViewModel = new ViewModelProvider((ViewModelStoreOwner) activity, new ViewModelProvider.AndroidViewModelFactory(activity.getApplication())).get(ArticleViewModel.class);
-//                articleViewModel.delete(article);
-//                Toast.makeText(activity.getApplicationContext(),"Berita berhasil dihapus",Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        holder.buttonBookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                articleViewModel = new ViewModelProvider((ViewModelStoreOwner) activity, new ViewModelProvider.AndroidViewModelFactory(activity.getApplication())).get(ArticleViewModel.class);
+                articleViewModel.delete(article);
+                Toast.makeText(activity.getApplicationContext(),"Berita berhasil dihapus",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +91,7 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<BookmarkListAdapte
     public class BookmarkViewHolder extends RecyclerView.ViewHolder {
         private final TextView publishedItemView, publisherItemView, titleItemView;
         private final ImageView thumbnailItemView;
+        private final ImageButton buttonBookmark;
         public CardView cardView;
 
         public BookmarkViewHolder(@NonNull @NotNull View itemView) {
@@ -99,6 +100,7 @@ public class BookmarkListAdapter extends RecyclerView.Adapter<BookmarkListAdapte
             publishedItemView = itemView.findViewById(R.id.txt_published_news);
             publisherItemView = itemView.findViewById(R.id.txt_publisher_news);
             thumbnailItemView = itemView.findViewById(R.id.img_thumbnail_news);
+            buttonBookmark = itemView.findViewById(R.id.btn_bookmark);
             cardView = itemView.findViewById(R.id.card_view_news);
         }
     }

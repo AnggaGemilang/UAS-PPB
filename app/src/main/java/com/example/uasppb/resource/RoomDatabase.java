@@ -30,43 +30,10 @@ public abstract class RoomDatabase extends androidx.room.RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     RoomDatabase.class, "nea")
-                            .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
             }
         }
         return INSTANCE;
     }
-
-    /**
-     * Override the onCreate method to populate the database.
-     * For this sample, we clear the database every time it is created.
-     */
-    private static androidx.room.RoomDatabase.Callback sRoomDatabaseCallback = new androidx.room.RoomDatabase.Callback() {
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-
-            databaseWriteExecutor.execute(() -> {
-                // Populate the database in the background.
-                // If you want to start with more words, just add them.
-                ArrayList<Articles> listArticle = ArticlesData.getListData();
-                ArticleDao articleDao = INSTANCE.articleDao();
-
-                articleDao.deleteAll();
-                for (int counter = 0; counter < listArticle.size(); counter++) {
-                    Article article = new Article(
-                            listArticle.get(counter).getAuthor(),
-                            listArticle.get(counter).getTitle(),
-                            listArticle.get(counter).getUrl(),
-                            listArticle.get(counter).getUrlToImage(),
-                            listArticle.get(counter).getPublishedAt(),
-                            listArticle.get(counter).getContent(),
-                            listArticle.get(counter).getSource().getName()
-                    );
-                    articleDao.insert(article);
-                }
-            });
-        }
-    };
 }

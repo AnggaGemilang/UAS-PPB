@@ -4,40 +4,44 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.uasppb.R;
 import com.example.uasppb.model.Articles;
 import com.example.uasppb.model.News;
 import com.example.uasppb.model.database.Article;
+import com.example.uasppb.ui.Bookmark.BookmarkListAdapter;
 import com.example.uasppb.ui.DetailActivity;
+import com.example.uasppb.viewmodel.ArticleViewModel;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class DashboardListAdapter extends ListAdapter<News, DashboardViewHolder> {
+public class DashboardListAdapter extends RecyclerView.Adapter<DashboardListAdapter.DashboardViewHolder> {
 
     Context context;
     ArrayList<Articles> articles;
-    private ArticleListener articleListener;
 
-    public DashboardListAdapter(Context context, ArrayList<Articles> articles, NewsDiff diffCallback, ArticleListener articleListener) {
-        super(diffCallback);
+    public DashboardListAdapter(Context context, ArrayList<Articles> articles) {
         this.context = context;
         this.articles = articles;
-        this.articleListener = articleListener;
-    }
-
-    @Override
-    public DashboardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return DashboardViewHolder.create(parent);
     }
 
     @Override
@@ -45,8 +49,16 @@ public class DashboardListAdapter extends ListAdapter<News, DashboardViewHolder>
         return articles.size();
     }
 
+    @NonNull
+    @Override
+    public DashboardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_template_item, parent, false);
+        return new DashboardViewHolder(view);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull DashboardViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        AtomicReference<Boolean> dataAda = new AtomicReference<>(false);
         Date date1 = null;
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -54,13 +66,10 @@ public class DashboardListAdapter extends ListAdapter<News, DashboardViewHolder>
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        holder.bind(sdf1.format(date1), articles.get(position).getUrlToImage(), articles.get(position).getTitle(), articles.get(position).getSource().getName(), articles.get(position).getUrl(), context);
-        holder.bookmarkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                articleListener.statusClick(view, articles.get(position));
-            }
-        });
+        holder.publishedItemView.setText(sdf1.format(date1));
+        Picasso.get().load(articles.get(position).getUrlToImage()).into(holder.thumbnailItemView);
+        holder.titleItemView.setText(articles.get(position).getTitle());
+        holder.publisherItemView.setText(articles.get(position).getSource().getName());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +100,20 @@ public class DashboardListAdapter extends ListAdapter<News, DashboardViewHolder>
         }
     }
 
-    public interface ArticleListener {
-        void statusClick(View view, Articles article);
+    public class DashboardViewHolder extends RecyclerView.ViewHolder {
+        private final TextView publishedItemView, publisherItemView, titleItemView;
+        private final ImageView thumbnailItemView;
+        public ImageButton bookmarkButton;
+        public CardView cardView;
+
+        public DashboardViewHolder(View itemView) {
+            super(itemView);
+            titleItemView = itemView.findViewById(R.id.txt_title_news);
+            publishedItemView = itemView.findViewById(R.id.txt_published_news);
+            publisherItemView = itemView.findViewById(R.id.txt_publisher_news);
+            thumbnailItemView = itemView.findViewById(R.id.img_thumbnail_news);
+            bookmarkButton = itemView.findViewById(R.id.btn_bookmark);
+            cardView = itemView.findViewById(R.id.card_view_news);
+        }
     }
 }

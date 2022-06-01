@@ -27,4 +27,8 @@ public interface ArticleDao {
 
     @Query("SELECT title FROM article WHERE url = :url")
     LiveData<List<String>> getArticle(String url);
+
+    @Query("SELECT * FROM article WHERE title LIKE '%' || :title || '%'")
+    LiveData<List<Article>> getArticleByQuery(String title);
+
 }

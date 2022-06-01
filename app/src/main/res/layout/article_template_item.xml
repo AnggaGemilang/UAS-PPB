@@ -36,8 +36,18 @@
                 android:layout_height="wrap_content"
                 android:text="24 May 2022, 20:00"
                 android:padding="17dp"
-                android:textSize="17dp"
+                android:textSize="15dp"
                 android:textColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/btn_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/ic_baseline_bookmark_24"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="2dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

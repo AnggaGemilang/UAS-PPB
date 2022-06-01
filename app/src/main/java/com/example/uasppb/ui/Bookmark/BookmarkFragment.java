@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.example.uasppb.databinding.FragmentBookmarkBinding;
-import com.example.uasppb.databinding.FragmentDashboardBinding;
 import com.example.uasppb.model.Articles;
 import com.example.uasppb.model.database.Article;
-import com.example.uasppb.resource.ArticlesData;
 import com.example.uasppb.ui.DetailActivity;
 import com.example.uasppb.viewmodel.ArticleViewModel;
 import com.example.uasppb.viewmodel.BookmarkViewModel;
@@ -45,10 +44,22 @@ public class BookmarkFragment extends Fragment { ;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         bookmarkViewModel = new ViewModelProvider(this).get(BookmarkViewModel.class);
         articleViewModel = new ViewModelProvider(this, new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(ArticleViewModel.class);
-        listArticle = ArticlesData.getListData();
+
+        binding.inputSearchBookmark.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                showQueryResult(s);
+                binding.inputSearchBookmark.setQuery("", false);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
         showRecyclerListView();
     }
 
@@ -82,4 +93,30 @@ public class BookmarkFragment extends Fragment { ;
             });
         });
     }
+
+    private void showQueryResult(String query){
+        articleViewModel.getArticleByQuery(query).observe(getViewLifecycleOwner(), news -> {
+            BookmarkListAdapter bookmarkListAdapter = new BookmarkListAdapter(news, getActivity());
+            binding.counter.setText("Bookmarked - " + news.size() + " News");
+            binding.recyclerViewBookmark.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+            binding.recyclerViewBookmark.setAdapter(bookmarkListAdapter);
+            bookmarkListAdapter.setOnItemClickCallback(new BookmarkListAdapter.OnItemClickCallback() {
+                @Override
+                public void onItemClicked(Article article) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title", article.getTitle());
+                    bundle.putString("author", article.getAuthor());
+                    bundle.putString("publisher", article.getSource_name());
+                    bundle.putString("published", article.getPublishedAt());
+                    bundle.putString("image", article.getUrlToImage());
+                    bundle.putString("content", article.getContent());
+                    bundle.putString("url", article.getUrl());
+                    Intent intent = new Intent(getActivity().getApplicationContext(), DetailActivity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });
+        });
+    }
+
 }
